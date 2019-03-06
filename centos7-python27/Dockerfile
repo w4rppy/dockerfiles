@@ -1,14 +1,20 @@
 FROM centos:7
 LABEL maintainer "Dorian Colnot dcolnot@w4rppy.net"
 
-RUN yum install -y \
-        gcc \
-        make \
-        sudo \
-        wget \
-        bzip2-devel \
-        openssl-devel \
-        openssl-ssh
+RUN yum makecache fast \
+ && yum -y install deltarpm epel-release initscripts \
+ && yum -y update \
+ && yum -y install \
+      gcc \
+      make \
+      sudo \
+      wget \
+      which \
+      bzip2-devel \
+      openssl-devel \
+      python-pip \
+ && yum clean all
+
 RUN cd /usr/src && \ 
     wget https://www.python.org/ftp/python/2.7.15/Python-2.7.15.tgz && \
     tar xzf Python-2.7.15.tgz && \
