@@ -21,5 +21,5 @@ RUN cd /usr/src && \
 ENV HOME /root
 WORKDIR $HOME
 
-ENTRYPOINT [ "bash" ]
+CMD ["/usr/lib/systemd/systemd"]
 
